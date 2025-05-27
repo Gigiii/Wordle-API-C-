@@ -1,6 +1,59 @@
-@WordleProject_HostAddress = http://localhost:5272
+﻿@host = https://localhost:7114
+@jwt = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwiZW1haWwiOiJ0ZXN0QGV4YW1wbGUuY29tIiwibmJmIjoxNzQ4MzUzNTgyLCJleHAiOjE3NDgzNTcxODIsImlhdCI6MTc0ODM1MzU4MiwiaXNzIjoiV29yZGxlQVBJIiwiYXVkIjoiV29yZGxlQ2xpZW50In0.DO_3kxTZx2OYAZgWXL8HLCCwN_PHAY3emsAjtOYABdY
+### Register a New User
+POST {{host}}/api/account/register
+Content-Type: application/json
 
-GET {{WordleProject_HostAddress}}/weatherforecast/
-Accept: application/json
+{
+  "email": "test@example.com",
+  "password": "Test123!"
+}
+
+###
+
+### Login and Retrieve JWT
+POST {{host}}/api/account/login
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "Test123!"
+}
+
+
+###
+
+### Start a New Game
+POST {{host}}/api/games/start
+Authorization: Bearer {{jwt}}
+
+###
+
+### Make a Guess
+POST {{host}}/api/games/guess
+Authorization: Bearer {{jwt}}
+Content-Type: application/json
+
+{
+  "word": "waltz"
+}
+
+###
+
+### Get My Statistics
+GET {{host}}/api/statistics
+Authorization: Bearer {{jwt}}
+
+###
+
+### Get All My Games
+GET {{host}}/api/games
+Authorization: Bearer {{jwt}}
+
+###
+
+### Get a Specific Game by ID
+GET {{host}}/api/games/5
+Authorization: Bearer {{jwt}}
 
 ###

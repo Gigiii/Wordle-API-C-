@@ -8,7 +8,7 @@ namespace WordleProject.Data
         public WordleDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<WordleDbContext>();
-            optionsBuilder.UseSqlServer("Server=EVA-LAPTOP;Database=WordleDB;Trusted_Connection=True;TrustServerCertificate=True");
+            optionsBuilder.UseSqlServer("Server=GIGI-DESKTOP;Database=WordleDB;Trusted_Connection=True;TrustServerCertificate=True");
 
             return new WordleDbContext(optionsBuilder.Options);
         }
